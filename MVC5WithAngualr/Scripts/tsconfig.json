@@ -12,7 +12,6 @@
   },
   "compileOnSave": true,
   "exclude": [
-    "node_modules",
-    "angualr"
+    "node_modules"
   ]
 }

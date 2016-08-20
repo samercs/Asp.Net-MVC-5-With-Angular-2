@@ -9,10 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var AppComponent = (function () {
-    function AppComponent() {
-        this.heroes = HEROES;
+    function AppComponent(http) {
+        this.http = http;
+        this.heroes = [];
         this.title = 'Tour of Heroes';
+        var self = this;
+        this.http.get('/Data/Index')
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            self.heroes = data;
+        });
     }
     AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
     AppComponent = __decorate([
@@ -20,7 +29,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             templateUrl: '/AngularTemplate/app.template.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], AppComponent);
     return AppComponent;
 }());
@@ -31,7 +40,7 @@ var Hero = (function () {
     return Hero;
 }());
 exports.Hero = Hero;
-var HEROES = [
+/*const HEROES: Hero[] = [
     { id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -42,5 +51,5 @@ var HEROES = [
     { id: 18, name: 'Dr IQ' },
     { id: 19, name: 'Magma' },
     { id: 20, name: 'Tornado' }
-];
+];*/
 //# sourceMappingURL=app.component.js.map
