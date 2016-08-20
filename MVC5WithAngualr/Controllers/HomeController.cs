@@ -26,5 +26,10 @@ namespace MVC5WithAngualr.Controllers
 
             return View();
         }
+
+        public ActionResult Angualr()
+        {
+            return View();
+        }
     }
 }
